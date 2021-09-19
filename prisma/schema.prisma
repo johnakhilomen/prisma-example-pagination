@@ -1,0 +1,30 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model forensicDetails {
+  id          Int     @id @default(autoincrement())
+  first_name  String?
+  last_name   String?
+  Criminal     String?
+  Blood_group String?
+  height    Int?
+  weight    Int?
+  Evidence  String?
+}
+ 
+model Product {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name        String
+  description String?
+  price       Decimal
+  sku         String  @unique
+  published   Boolean @default(false)
+}
